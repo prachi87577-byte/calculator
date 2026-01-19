@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        input {
+            width: 240px;
+            height: 40px;
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 20px;
+            padding: 5px 10px;
+        }
+        .cont {
+            display: grid;
+            flex-direction: column;
+            align-items: center;
+            gap:50px;
+        }
+        .btn-cont{
+            display: grid;
+            grid-template-columns: repeat(4, 60px);
+            gap: 10px;
+        }
+        </style>    
+</head>
+<body>
+    <div class="cont">
+        <input type="text">
+        
+        
+    
+        <div class="btn-cont">
+
+        
+            <button >AC</button>
+            <button >+</button>
+            <button >-</button>
+            <button >%</button>
+            <button >/</button>
+            <button >0</button>
+            <button >4</button>
+            <button >7</button>
+            <button >6</button>
+            <button >8</button>
+            <button >2</button>
+            <button >5</button>
+            <button >9</button>
+            <button >1</button>
+            <button >3</button>
+            <button >=</button>
+        </div> 
+            
+    </div>
+        
+    <script>
+
+        let arrbtn = ["+", "-", "%", "/", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
+
+        let inp = document.querySelector("input");
+        let btn = document.querySelector(".btn-cont");
+
+        function cal(event) {
+        if (event.target.tagName !== "BUTTON") {
+            return;
+        }
+        let value = event.target.innerText;
+
+        if (arrbtn.includes(value)) {
+            inp.value += value;
+            return;
+        }
+
+        if (value === "AC") {
+            inp.value = "";
+            return;
+        }
+
+        if (value === "=") {
+            try {
+            inp.value = eval(inp.value);
+            } catch {
+            inp.value = "Error";
+            }
+        }
+        }
+
+        btn.addEventListener("click", cal);
+
+
+    </script>
+            
+    
+    
+</body>
+</html>
